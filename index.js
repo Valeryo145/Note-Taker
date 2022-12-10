@@ -2,13 +2,13 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const ntData = require("./db/db.json");
+//npm pack
 const { v4: uuidv4 } = require("uuid");
 
 //Creating an "express" server
 const app = express();
-
 //Sets an initial port
-const PORT = process.env.PORT || 3000 ; 
+const PORT = process.env.PORT || 8000 ; 
 
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +29,31 @@ app.post("/api/notes", (req, res) => {
   fs.writeFileSync("./db/db.json", JSON.stringify(ntData));
   res.json(ntData);
 })
-//delete
 
-app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
+/*delete
+app.delete("/api/notes/:id", function (req, res) {
+  let jsonFilePath = path.join(__dirname, "/db/db.json");
+  // request to delete note by id.
+  for (let i = 0; i < database.length; i++) {
+
+      if (database[i].id == req.params.id) {
+          // Splice takes i position, and then deletes the 1 note.
+          database.splice(i, 1);
+          break;
+      }
+  }
+  // Write the db.json file again.
+  fs.writeFileSync(jsonFilePath, JSON.stringify(database), function (err) {
+
+      if (err) {
+          return console.log(err);
+      } else {
+          console.log("Your note was deleted!");
+      }
+  });
+  res.json(database);
+});
+*/
+
+app.listen(PORT, () => 
+ console.log(`App listening on PORT ${PORT}`));
