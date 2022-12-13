@@ -10,6 +10,7 @@ const app = express();
 //Sets an initial port
 const PORT = process.env.PORT || 8000 ; 
 
+
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -30,20 +31,20 @@ app.post("/api/notes", (req, res) => {
   res.json(ntData);
 })
 
-/*delete
+//delete
 app.delete("/api/notes/:id", function (req, res) {
   let jsonFilePath = path.join(__dirname, "/db/db.json");
   // request to delete note by id.
-  for (let i = 0; i < database.length; i++) {
+  for (let i = 0; i < ntData.length; i++) {
 
-      if (database[i].id == req.params.id) {
+      if (ntData[i].id == req.params.id) {
           // Splice takes i position, and then deletes the 1 note.
-          database.splice(i, 1);
-          break;
+          ntData.splice(i, 1);
+          return;
       }
   }
   // Write the db.json file again.
-  fs.writeFileSync(jsonFilePath, JSON.stringify(database), function (err) {
+  fs.writeFileSync(jsonFilePath, JSON.stringify(ntData), function (err) {
 
       if (err) {
           return console.log(err);
@@ -51,9 +52,9 @@ app.delete("/api/notes/:id", function (req, res) {
           console.log("Your note was deleted!");
       }
   });
-  res.json(database);
+  res.json(ntData);
 });
-*/
+
 
 app.listen(PORT, () => 
  console.log(`App listening on PORT ${PORT}`));
