@@ -30,3 +30,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 The following image shows the web application's appearance and functionality:
 
 ![Note Taker Screenshot ](https://user-images.githubusercontent.com/110436164/206873072-3b3b9744-c134-4e7f-8953-6800161c5fb2.png)
+
+## Link to deployed application
+
+https://immense-peak-03954.herokuapp.com/
